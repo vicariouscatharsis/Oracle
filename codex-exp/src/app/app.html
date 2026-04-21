@@ -1,0 +1,79 @@
+<main class="api-shell">
+  <section class="hero" aria-label="Hope and Victory Universe Consult">
+    <img
+      class="hero-image"
+      src="/fortune-consult.jpg"
+      alt="Two fortune tellers with a glowing crystal ball and tarot cards"
+    />
+  </section>
+
+  <section class="answer-experience" aria-labelledby="answer-title">
+    <div class="section-copy">
+      <p class="eyebrow">{{ selectedEyebrow() }}</p>
+      <h2 id="answer-title">{{ selectedTitle() }}</h2>
+    </div>
+
+    <div class="answer-type-picker" role="tablist" aria-label="Answer type">
+      @for (type of answerTypes; track type.key) {
+        <button
+          type="button"
+          class="type-button"
+          [class.is-active]="selectedAnswerType() === type.key"
+          [attr.aria-pressed]="selectedAnswerType() === type.key"
+          (click)="selectAnswerType(type.key)"
+        >
+          {{ type.label }}
+        </button>
+      }
+    </div>
+
+    <article class="answer-stage" aria-live="polite">
+      @if (selectedErrorMessage()) {
+        <p class="api-text error-text">{{ selectedErrorMessage() }}</p>
+      } @else if (selectedAnswerType() === 'yesNo' && isSelectedRevealed() && yesNoAnswer()) {
+        <div class="yes-no-reading">
+          <p class="yes-no-answer">{{ yesNoAnswer()?.answer }}</p>
+          <img class="yes-no-image" [src]="yesNoAnswer()?.image" alt="" />
+        </div>
+      } @else if (selectedAnswerType() === 'card' && isSelectedRevealed() && cardReading()) {
+        <div class="card-reading">
+          <img
+            class="card-image"
+            [src]="cardReading()?.image"
+            [alt]="cardReading()?.value + ' of ' + cardReading()?.suit"
+          />
+        </div>
+      } @else if (selectedAnswerType() === 'number' && isSelectedRevealed() && numberReading()) {
+        <div class="number-reading">
+          <p class="number-symbol">{{ numberReading()?.number }}</p>
+        </div>
+      } @else if (selectedAnswerType() === 'giphy' && isSelectedRevealed() && giphyReading()) {
+        <div class="giphy-reading">
+          <img
+            class="giphy-image"
+            [src]="giphyImageUrl(giphyReading())"
+            [alt]="giphyReading()?.title || 'Random GIF from GIPHY'"
+          />
+        </div>
+      } @else if (selectedAnswerType() === 'emoji' && isSelectedRevealed() && emojiReading()) {
+        <div class="emoji-reading">
+          <p class="emoji-symbol">{{ emojiSymbol(emojiReading()) }}</p>
+        </div>
+      } @else if (selectedAnswerType() === 'advice' && isSelectedRevealed() && advice()) {
+        <p class="api-text">{{ advice()?.advice }}</p>
+      } @else if (selectedAnswerType() === 'fact' && isSelectedRevealed() && fact()) {
+        <p class="api-text">{{ fact()?.text }}</p>
+      } @else if (isSelectedLoading()) {
+        <p class="api-text">Loading...</p>
+      } @else {
+        <div class="answer-placeholder" aria-hidden="true">
+          <div class="placeholder-glow"></div>
+        </div>
+      }
+
+      <button type="button" class="action-button" (click)="loadSelectedAnswer()" [disabled]="isSelectedLoading()">
+        {{ selectedActionLabel() }}
+      </button>
+    </article>
+  </section>
+</main>

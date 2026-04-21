@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title>Crystal Ball</title>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#122c35" />
+      <stop offset="100%" stop-color="#24133e" />
+    </linearGradient>
+    <radialGradient id="orb" cx="38%" cy="34%" r="62%">
+      <stop offset="0%" stop-color="#d8fff8" />
+      <stop offset="45%" stop-color="#8fd9d2" />
+      <stop offset="100%" stop-color="#4a7593" />
+    </radialGradient>
+    <linearGradient id="base" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f2e7b4" />
+      <stop offset="100%" stop-color="#caa14a" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#bg)" />
+  <circle cx="32" cy="27" r="17" fill="url(#orb)" stroke="#f1df9a" stroke-width="2.5" />
+  <path d="M22 27c3-5 6-7 10-7s7 2 10 7" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="2" stroke-linecap="round" />
+  <circle cx="27" cy="22" r="4" fill="rgba(255,255,255,0.45)" />
+  <path d="M27 43h10l4 7H23l4-7Z" fill="url(#base)" />
+  <rect x="25" y="50" width="14" height="4" rx="2" fill="#b98d38" />
+</svg>
