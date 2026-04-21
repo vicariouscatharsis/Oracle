@@ -1,0 +1,12 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "installCommand": "npm --prefix codex-exp install",
+  "buildCommand": "npm --prefix codex-exp run build",
+  "outputDirectory": "codex-exp/dist/codex-exp/browser",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
