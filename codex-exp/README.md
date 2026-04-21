@@ -39,6 +39,7 @@ This will compile your project and store the build artifacts in the `dist/` dire
 ## Deploying to Vercel
 
 This repo is configured for Vercel with [vercel.json](/d:/Vs%20Codex/codex-exp/vercel.json).
+The Angular build is static-only, and Vercel publishes `dist/codex-exp/browser`.
 
 ### Option 1: Import from Git
 
